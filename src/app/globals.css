@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark theme variables as per PRD and refined for a professional feel */
+    --background: 224 71% 4%; /* Very dark desaturated blue: #080910 */
+    --foreground: 210 20% 98%; /* Almost white: #f9fafb */
+
+    --card: 224 71% 9%; /* Darker blue-gray, slightly lighter than background: #111827 */
+    --card-foreground: 210 20% 98%; /* #f9fafb */
+
+    --popover: 224 71% 9%; /* Same as card for consistency */
+    --popover-foreground: 210 20% 98%;
+
+    /* PRD Primary: #3F51B5 */
+    --primary: 229 49% 48%;
+    --primary-foreground: 210 20% 98%; /* White text on blue buttons */
+
+    --secondary: 215 28% 17%; /* Dark cool gray: #202836 */
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 215 28% 25%; /* Medium cool gray: #313b4e */
+    --muted-foreground: 215 20% 65%; /* Lighter gray for muted text: #9aa5b8 */
+
+    /* PRD Accent: #FF5722 */
+    --accent: 16 100% 57%;
+    --accent-foreground: 224 71% 4%; /* Dark text on orange buttons */
+
+    --destructive: 0 72% 51%; /* Bright red: #e53e3e */
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 215 28% 20%; /* Slightly lighter than secondary for borders: #2a3343 */
+    --input: 215 28% 22%; /* Input background: #2c3647 */
+    --ring: 229 49% 58%; /* Lighter version of primary for focus rings */
+
+    --radius: 0.5rem;
+
+    /* Chart colors (can be adjusted if charts are used extensively) */
+    --chart-1: 229 49% 48%; /* Primary */
+    --chart-2: 160 60% 45%; /* A teal/green */
+    --chart-3: 16 100% 57%;  /* Accent */
+    --chart-4: 280 65% 60%; /* A purple */
+    --chart-5: 340 75% 55%; /* A pink/magenta */
+    
+    /* Sidebar variables (keeping for completeness, though not explicitly used in this game app) */
+    --sidebar-background: 224 71% 6%; 
+    --sidebar-foreground: 210 20% 96%; 
+    --sidebar-primary: 229 49% 48%; 
+    --sidebar-primary-foreground: 210 20% 98%;
+    --sidebar-accent: 224 71% 12%; 
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 215 28% 15%; 
+    --sidebar-ring: 229 49% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11"; /* More professional OpenType features for Geist */
+  }
+  /* Subtle transitions for a smoother feel */
+  button, a, input[type="checkbox"], input[type="radio"], select {
+    @apply transition-all duration-200 ease-in-out;
+  }
+}
