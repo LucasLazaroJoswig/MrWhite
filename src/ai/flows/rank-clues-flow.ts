@@ -103,14 +103,15 @@ const rankCluesFlow = ai.defineFlow(
     // Log the input to the AI for easier debugging if issues persist
     console.log(`[rankCluesFlow] Input to AI for ${rankCluesPromptObject.name}:`, JSON.stringify(input, null, 2));
 
-    const { output, usage, error } = await rankCluesPromptObject(input);
+    const { output, usage } = await rankCluesPromptObject(input);
+const error = output?.error; // Safely check for error if it's part of the output object
 
-    if (error) {
-      console.error(`[rankCluesFlow] Error from AI model (${rankCluesPromptObject.name}):`, error);
-      console.error('[rankCluesFlow] Input to AI that caused error:', JSON.stringify(input, null, 2));
-      console.error('[rankCluesFlow] Usage data (if available):', JSON.stringify(usage, null, 2));
-      throw new Error(`Error de la IA al procesar la solicitud: ${error.message || 'Error desconocido'}`);
-    }
+if (error) {
+  console.error(`[rankCluesFlow] Error from AI model (${rankCluesPromptObject.name}):`, error);
+  console.error('[rankCluesFlow] Input to AI that caused error:', JSON.stringify(input, null, 2));
+  console.error('[rankCluesFlow] Usage data (if available):', JSON.stringify(usage, null, 2));
+  throw new Error(`Error de la IA al procesar la solicitud: ${error.message || 'Error desconocido'}`);
+}
 
     if (!output) {
       console.error(
