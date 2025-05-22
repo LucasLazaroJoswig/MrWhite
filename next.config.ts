@@ -17,7 +17,13 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
+    unoptimized: true, // Required for static export
   },
+  // Configuration for GitHub Pages
+  output: 'export',
+  basePath: '/MrWhite',
+  assetPrefix: '/MrWhite/',
+  trailingSlash: true,
 };
 
 export default nextConfig;
